@@ -25,6 +25,7 @@ class SiswaPanelProvider extends PanelProvider
         return $panel
             ->id('siswa')
             ->path('siswa')
+            ->login(null)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -51,6 +52,7 @@ class SiswaPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\EnsureUserHasPanelRole::class,
             ]);
     }
 }

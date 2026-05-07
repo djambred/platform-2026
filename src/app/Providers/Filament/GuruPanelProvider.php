@@ -25,6 +25,7 @@ class GuruPanelProvider extends PanelProvider
         return $panel
             ->id('guru')
             ->path('guru')
+            ->login(null)
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -51,6 +52,7 @@ class GuruPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\EnsureUserHasPanelRole::class,
             ]);
     }
 }
