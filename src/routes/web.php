@@ -21,3 +21,12 @@ Livewire::setScriptRoute(function ($handle) {
 Route::get('/', function () {
     return view('welcome');
 });
+
+// routes/web.php
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+    ->name('login.store');
